@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { ThemeAttributeSync } from "@/components/providers/ThemeAttributeSync";
+import { getSiteUrl, siteConfig } from "@/lib/seo/site";
 
 import "./globals.css";
 
@@ -18,12 +19,42 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = getSiteUrl();
+
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
-    default: "seed-kit",
-    template: "%s | seed-kit",
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
   },
-  description: "재사용 가능한 Next.js·React·Tailwind 프론트엔드 스타터",
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: "/",
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImagePath,
+        width: 1200,
+        height: 630,
+        alt: "seed-kit default OG image",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    creator: siteConfig.twitterHandle,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImagePath],
+  },
 };
 
 export default function RootLayout({

@@ -1,0 +1,22 @@
+﻿export const siteConfig = {
+  name: "seed-kit",
+  description: "재사용 가능한 Next.js React Tailwind 프론트엔드 스타터",
+  keywords: [
+    "Next.js starter",
+    "React starter",
+    "TypeScript",
+    "Tailwind CSS",
+    "Zustand",
+    "TanStack Query",
+    "SEO",
+  ],
+  locale: "ko_KR",
+  twitterHandle: "@seedkit",
+  // 배포 환경에서는 NEXT_PUBLIC_SITE_URL 설정 권장
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  ogImagePath: "/og/og-default.svg",
+} as const;
+
+export function getSiteUrl() {
+  return new URL(siteConfig.url);
+}
