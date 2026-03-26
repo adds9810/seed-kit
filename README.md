@@ -14,22 +14,26 @@
   - `src/app`, `src/components`, `src/features`, `src/hooks`, `src/store`, `src/lib`, `src/utils`, `src/styles`, `public`
 - **경로 별칭**: `@/*` → `src/*` (`tsconfig.json`의 `baseUrl`, `paths`; `next.config.ts`에 정책 설명 주석)
 - **공통 레이아웃**: 루트 `layout`에서 헤더·본문(`main`)·푸터, 스킵 링크(`#main-content`)
-- **헤더**: 로고·주요 내비게이션, 모바일 메뉴(로컬 state — 이후 Zustand로 교체 가능), `id="primary-navigation"`·`aria-expanded` 등 접근성 속성
+- **헤더**: 로고·주요 내비게이션·테마 선택(시스템/라이트/다크), 모바일 메뉴는 **Zustand**와 연동, `id="primary-navigation"`·`aria-expanded`·`aria-controls` 유지
+- **Zustand UI 스토어** (`src/store/ui-store.ts`): 모바일 메뉴 열림, 테마 선호. 테마만 `localStorage`(`seed-kit-ui`)에 persist
+- **테마 동기화**: `ThemeAttributeSync`가 `<html class="dark">` 반영(시스템 모드는 `prefers-color-scheme` 감지). `layout`의 `<html suppressHydrationWarning>` 으로 클라이언트 전환 시 경고 완화
+- **다크 모드 CSS**: `globals.css`의 `@custom-variant dark` + `.dark`에서 표면·테두리 등 토큰 덮어쓰기, 본문 보조 텍스트는 `--text-secondary`
 - **공용 UI**: `Button`, `ButtonLink`, `TextLink` (`src/components/ui`)
 - **페이지**: 홈(`/`), 소개(`/about`) — 제목 계층(`h1`~`h2`)·섹션 `aria-labelledby` 정리
 - **메타데이터 기본값**: 사이트명·`title` 템플릿(`%s | seed-kit`)·기본 `description` (검색·SNS용 세부 설정은 이후 보강)
 
-**Zustand**, **TanStack Query**, 검색엔진용 메타데이터 전체 패키지(OG 이미지·sitemap 등)는 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
+**TanStack Query**, 검색엔진용 메타데이터 전체 패키지(OG 이미지·sitemap 등)는 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
 
 ## 기술 스택 (현재)
 
-| 구분       | 내용                                 |
-| ---------- | ------------------------------------ |
-| 프레임워크 | Next.js (App Router)                 |
-| 언어       | TypeScript                           |
-| 스타일     | Tailwind CSS v4 + 모바일 퍼스트 토큰 |
-| 린트       | ESLint + eslint-config-next          |
-| 포맷       | Prettier + eslint-config-prettier    |
+| 구분            | 내용                                 |
+| --------------- | ------------------------------------ |
+| 프레임워크      | Next.js (App Router)                 |
+| 언어            | TypeScript                           |
+| 스타일          | Tailwind CSS v4 + 모바일 퍼스트 토큰 |
+| 클라이언트 상태 | Zustand (`persist` 로 테마만 저장)   |
+| 린트            | ESLint + eslint-config-next          |
+| 포맷            | Prettier + eslint-config-prettier    |
 
 ## 사전 요구 사항
 
@@ -76,6 +80,12 @@ npm run start
 - 설정: `tsconfig.json` 의 `baseUrl`, `paths` (`"@/*": ["./src/*"]`)
 - 앱 코드는 `@/components/...`, `@/features/...` 형태로 맞추면 됩니다.
 
+## Zustand (`src/store`)
+
+- **`useUiStore`**: `mobileMenuOpen`, `toggleMobileMenu`, `closeMobileMenu`, `theme`, `setTheme`
+- **persist**: 스토리지 키 `seed-kit-ui`, 저장 필드는 **`theme`만** (메뉴 열림은 새로고침 시 닫힘)
+- **확장**: `ui-store.ts` 안의 섹션 주석을 기준으로 슬라이스·파일 분리하면 됩니다.
+
 ## Tailwind 기준 (모바일 퍼스트)
 
 - 브레이크포인트 기준
@@ -87,7 +97,9 @@ npm run start
   - 최소 디자인 토큰: `--color-brand-600`, `--radius-md`, `--shadow-sm`
 - 전역 스타일 엔트리: `src/app/globals.css`
   - `@import "../styles/tokens.css";`
-  - `page-container`, `section-gap` 유틸 클래스 포함
+  - `@custom-variant dark (&:where(.dark, .dark *));` 로 클래스 기반 다크 유틸(`dark:`) 사용
+  - `.dark` 에서 표면·테두리·그림자 등 토큰 덮어쓰기, `--text-secondary` 보조 텍스트색
+  - `page-container`, `section-gap`, `.skip-link` 유틸 포함
 
 ## 코드 스타일 · 린트
 
@@ -114,13 +126,15 @@ seed-kit/
 │   │   │   └── page.tsx    # 소개 페이지
 │   │   ├── favicon.ico
 │   │   ├── globals.css
-│   │   ├── layout.tsx      # 헤더·main·푸터·스킵 링크
+│   │   ├── layout.tsx      # 헤더·main·푸터·스킵 링크·테마 동기화
 │   │   └── page.tsx        # 홈
 │   ├── components/         # 재사용 UI
 │   │   ├── README.md
 │   │   ├── layout/
 │   │   │   ├── SiteHeader.tsx
 │   │   │   └── SiteFooter.tsx
+│   │   ├── providers/
+│   │   │   └── ThemeAttributeSync.tsx
 │   │   └── ui/
 │   │       ├── Button.tsx  # Button + ButtonLink
 │   │       └── TextLink.tsx
@@ -130,8 +144,10 @@ seed-kit/
 │   │   └── README.md
 │   ├── lib/                # 라이브러리성 설정·클라이언트
 │   │   └── README.md
-│   ├── store/              # 클라이언트 전역 상태
-│   │   └── README.md
+│   ├── store/              # 클라이언트 전역 상태 (Zustand)
+│   │   ├── README.md
+│   │   ├── index.ts
+│   │   └── ui-store.ts
 │   ├── styles/             # 전역 CSS 확장용 (엔트리는 현재 app/globals.css)
 │   │   ├── README.md
 │   │   └── tokens.css

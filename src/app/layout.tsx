@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { ThemeAttributeSync } from "@/components/providers/ThemeAttributeSync";
 
 import "./globals.css";
 
@@ -32,9 +33,11 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <ThemeAttributeSync />
         <a className="skip-link" href="#main-content">
           본문으로 건너뛰기
         </a>
