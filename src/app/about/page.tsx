@@ -1,11 +1,29 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 
 import { ButtonLink } from "@/components/ui/Button";
 
-export const metadata: Metadata = {
-  title: "소개",
-  description: "seed-kit 스타터 구성과 목적을 설명합니다.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const title = "소개";
+  const description = "seed-kit 스타터 구성과 목적을 설명합니다.";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: "/about",
+    },
+    openGraph: {
+      title,
+      description,
+      url: "/about",
+      type: "article",
+    },
+    twitter: {
+      title,
+      description,
+    },
+  };
+}
 
 export default function AboutPage() {
   return (
@@ -18,7 +36,7 @@ export default function AboutPage() {
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
             사이드 프로젝트와 포트폴리오를 빠르게 시작하기 위한 최소 구성입니다.
-            페이지별 제목은 메타데이터의 title 템플릿과 함께 쓰일 수 있습니다.
+            페이지별 제목은 메타데이터의 title 템플릿과 함께 쓸 수 있습니다.
           </p>
         </header>
 
@@ -38,8 +56,8 @@ export default function AboutPage() {
             다음에 붙이기 좋은 것
           </h2>
           <p className="mt-3 text-sm text-[--text-secondary] md:text-base">
-            UI 외 전역 상태·서버 상태 라이브러리·SEO 메타 보강 등은 프로젝트 성격에 맞게
-            추가하면 됩니다.
+            UI 외 전역 상태, 서버 상태 라이브러리, SEO 메타 보강 등은 프로젝트 성격에
+            맞게 추가하면 됩니다.
           </p>
           <div className="mt-6">
             <ButtonLink href="/" variant="outline">
