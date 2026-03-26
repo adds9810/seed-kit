@@ -13,8 +13,13 @@
 - **`src/` 아래 실무형 디렉터리 골격**과 각 폴더 **역할 안내용 `README.md`**
   - `src/app`, `src/components`, `src/features`, `src/hooks`, `src/store`, `src/lib`, `src/utils`, `src/styles`, `public`
 - **경로 별칭**: `@/*` → `src/*` (`tsconfig.json`의 `baseUrl`, `paths`; `next.config.ts`에 정책 설명 주석)
+- **공통 레이아웃**: 루트 `layout`에서 헤더·본문(`main`)·푸터, 스킵 링크(`#main-content`)
+- **헤더**: 로고·주요 내비게이션, 모바일 메뉴(로컬 state — 이후 Zustand로 교체 가능), `id="primary-navigation"`·`aria-expanded` 등 접근성 속성
+- **공용 UI**: `Button`, `ButtonLink`, `TextLink` (`src/components/ui`)
+- **페이지**: 홈(`/`), 소개(`/about`) — 제목 계층(`h1`~`h2`)·섹션 `aria-labelledby` 정리
+- **메타데이터 기본값**: 사이트명·`title` 템플릿(`%s | seed-kit`)·기본 `description` (검색·SNS용 세부 설정은 이후 보강)
 
-**Zustand**, **TanStack Query**, 공통 레이아웃, SEO 패키지 등은 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
+**Zustand**, **TanStack Query**, 검색엔진용 메타데이터 전체 패키지(OG 이미지·sitemap 등)는 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
 
 ## 기술 스택 (현재)
 
@@ -47,8 +52,10 @@ npm install
 npm run dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 됩니다.  
-페이지 소스는 `src/app/page.tsx` 입니다.
+브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 됩니다.
+
+- 홈: `/` → `src/app/page.tsx`
+- 소개: `/about` → `src/app/about/page.tsx`
 
 ### 프로덕션 빌드
 
@@ -103,12 +110,20 @@ seed-kit/
 ├── src/
 │   ├── app/                # App Router (라우트·layout·page)
 │   │   ├── README.md
+│   │   ├── about/
+│   │   │   └── page.tsx    # 소개 페이지
 │   │   ├── favicon.ico
 │   │   ├── globals.css
-│   │   ├── layout.tsx
-│   │   └── page.tsx
+│   │   ├── layout.tsx      # 헤더·main·푸터·스킵 링크
+│   │   └── page.tsx        # 홈
 │   ├── components/         # 재사용 UI
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── layout/
+│   │   │   ├── SiteHeader.tsx
+│   │   │   └── SiteFooter.tsx
+│   │   └── ui/
+│   │       ├── Button.tsx  # Button + ButtonLink
+│   │       └── TextLink.tsx
 │   ├── features/           # 기능·도메인 단위 모듈
 │   │   └── README.md
 │   ├── hooks/              # 공통 커스텀 훅
