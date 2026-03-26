@@ -1,4 +1,4 @@
-﻿export const siteConfig = {
+export const siteConfig = {
   name: "seed-kit",
   description: "재사용 가능한 Next.js React Tailwind 프론트엔드 스타터",
   keywords: [
@@ -11,7 +11,7 @@
     "SEO",
   ],
   locale: "ko_KR",
-  twitterHandle: "@seedkit",
+  twitterHandle: process.env.NEXT_PUBLIC_TWITTER_HANDLE ?? "@seedkit",
   // 배포 환경에서는 NEXT_PUBLIC_SITE_URL 설정 권장
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
   ogImagePath: "/og/og-default.svg",

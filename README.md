@@ -1,143 +1,107 @@
-﻿# seed-kit
+# seed-kit
 
-사이드 프로젝트·포트폴리오용으로 재사용할 **Next.js 프론트엔드 스타터 키트**입니다.  
-반복되는 초기 세팅을 줄이고, 필요에 따라 폴더 구조·상태관리·SEO 등을 확장하기 쉽게 구성했습니다.
+사이드 프로젝트/포트폴리오에서 반복되는 초기 세팅을 줄이기 위한 `Next.js + React + Tailwind` 스타터입니다.  
+너무 무겁지 않게 시작하되, 기능 확장과 유지보수가 쉬운 구조를 목표로 합니다.
 
-## 프로젝트에 포함된 것
+## 프로젝트 소개
 
-- **Next.js 16** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS v4** (`@tailwindcss/postcss`)
-- **Tailwind 커스텀 토큰**: 모바일 퍼스트(`767px 이하` 모바일, `md=768px`), container/spacing/minimal color·radius·shadow
-- **ESLint 9** + `eslint-config-next` + **Prettier** + **eslint-config-prettier**
-- 개발 서버: **Turbopack** (`npm run dev`)
-- **`src/` 아래 실무형 디렉터리 골격**과 각 폴더 **역할 안내용 `README.md`**
-- **경로 별칭**: `@/*` → `src/*`
-- **공통 레이아웃**: 루트 `layout`에서 헤더·본문(`main`)·푸터, 스킵 링크(`#main-content`)
-- **Zustand UI 스토어**: 모바일 메뉴 + 테마(시스템/라이트/다크)
-- **TanStack Query**: `QueryProvider`, `QueryClient` 기본 옵션, JSONPlaceholder 예제
-- **SEO 기본 구조**: `metadataBase`, title 템플릿, description/keywords, Open Graph, Twitter, canonical, `robots.ts`, `sitemap.ts`
+- 모바일 퍼스트 반응형 기준(767px 이하 모바일)
+- App Router 기반 SEO/접근성 기본 구조
+- Zustand(클라이언트 UI 상태), TanStack Query(서버 상태) 기본 연결
+- 실전 프로젝트로 바로 시작 가능한 폴더 구조와 가이드 문서
 
-## 기술 스택 (현재)
+## 기술 스택
 
-| 구분            | 내용                                   |
-| --------------- | -------------------------------------- |
-| 프레임워크      | Next.js (App Router)                   |
-| 언어            | TypeScript                             |
-| 스타일          | Tailwind CSS v4 + 모바일 퍼스트 토큰   |
-| 클라이언트 상태 | Zustand (`persist`로 테마만 저장)      |
-| 서버 상태       | TanStack Query (React Query)           |
-| SEO             | App Router Metadata + robots + sitemap |
-| 린트            | ESLint + eslint-config-next            |
-| 포맷            | Prettier + eslint-config-prettier      |
+| 구분       | 내용                                    |
+| ---------- | --------------------------------------- |
+| 프레임워크 | Next.js (App Router)                    |
+| 언어       | TypeScript                              |
+| 스타일     | Tailwind CSS v4                         |
+| 상태 관리  | Zustand                                 |
+| 서버 상태  | TanStack Query (React Query)            |
+| SEO        | Metadata API, `robots.ts`, `sitemap.ts` |
+| 린트/포맷  | ESLint, Prettier                        |
 
 ## 사전 요구 사항
 
-- **Node.js** 20 이상 권장
-- **npm** (잠금 파일: `package-lock.json`)
+- Node.js 20+
+- npm
 
 ## 설치 방법
-
-저장소를 클론한 뒤 프로젝트 루트에서:
 
 ```bash
 npm install
 ```
 
+환경변수 파일 준비:
+
+```bash
+cp .env.example .env.local
+```
+
+PowerShell:
+
+```powershell
+Copy-Item .env.example .env.local
+```
+
 ## 실행 방법
 
-### 개발 서버
+개발 서버:
 
 ```bash
 npm run dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 됩니다.
-
-- 홈: `/` → `src/app/page.tsx`
-- 소개: `/about` → `src/app/about/page.tsx`
-
-### 프로덕션 빌드
+프로덕션 빌드:
 
 ```bash
 npm run build
 ```
 
-### 프로덕션 서버 (빌드 후)
+프로덕션 실행:
 
 ```bash
 npm run start
 ```
 
-## 경로 별칭 `@/`
+품질 검사:
 
-`import { ... } from "@/lib/..."`처럼 `src/` 기준으로 import 할 수 있습니다.
+```bash
+npm run lint
+npm run format:check
+```
 
-- 설정: `tsconfig.json`의 `baseUrl`, `paths` (`"@/*": ["./src/*"]`)
+## 환경변수
 
-## TanStack Query
+예시 파일: `.env.example`
 
-- **Provider**: `src/components/providers/QueryProvider.tsx` — 클라이언트에서 `QueryClient`를 한 번만 생성(`useState`)
-- **기본 옵션**: `src/lib/query/query-client.ts`의 `createQueryClient()`
-  - `staleTime`: 60초
-  - `gcTime`: 5분
-  - `retry`: 1회
-  - `refetchOnWindowFocus`: false
-- **예시**: `src/components/examples/JsonPlaceholderPostSample.tsx` + `src/lib/api/json-placeholder.ts`
+- `NEXT_PUBLIC_SITE_URL`: canonical, OG, sitemap 기준 URL
+- `NEXT_PUBLIC_TWITTER_HANDLE`: Twitter metadata creator
 
-## Zustand (`src/store`)
+규칙:
 
-- **`useUiStore`**: `mobileMenuOpen`, `toggleMobileMenu`, `closeMobileMenu`, `theme`, `setTheme`
-- **persist**: 스토리지 키 `seed-kit-ui`, 저장 필드는 `theme`만
+- `NEXT_PUBLIC_` 접두사는 브라우저 코드에 노출됩니다.
+- 비밀값(API secret, private key)은 `NEXT_PUBLIC_` 없이 서버 전용으로 관리하세요.
 
-## SEO 구성
+## 현재 구성
 
-- **공통 사이트 설정**: `src/lib/seo/site.ts`
-  - `NEXT_PUBLIC_SITE_URL` 기반 `metadataBase` (없으면 `https://example.com`)
-  - 사이트명·설명·키워드·OG 이미지 경로 상수
-- **루트 메타데이터**: `src/app/layout.tsx`
-  - `title.default` + `title.template`
+- 경로 별칭: `@/*` → `src/*`
+- 공통 레이아웃: `header` / `main` / `footer`, skip link
+- UI 상태: 모바일 메뉴 열림/닫힘, 테마(light/dark/system)
+- Query: `QueryProvider`, 기본 `QueryClient`, 외부 API 예제(JSONPlaceholder)
+- SEO:
+  - `metadataBase`, `title default/template`
   - `description`, `keywords`
-  - `alternates.canonical`
-  - `openGraph` (siteName, locale, images)
-  - `twitter` (card, images)
-- **페이지별 확장 예시**: `src/app/about/page.tsx`
-  - `generateMetadata()`로 `/about`용 canonical, OG/Twitter 오버라이드
-- **크롤러 설정**
-  - `src/app/robots.ts`
-  - `src/app/sitemap.ts`
-
-### favicon / OG 이미지 경로 가이드
-
-- favicon: `src/app/favicon.ico`
-- 기본 OG 이미지: `public/og/og-default.svg`
-  - 실서비스에서는 **1200x630 PNG/JPG**로 교체 권장
-  - `siteConfig.ogImagePath`와 파일 경로를 함께 변경
-
-## Tailwind 기준 (모바일 퍼스트)
-
-- 브레이크포인트 기준
-  - `md`: `48rem` (768px)
-  - 따라서 `767px 이하`를 모바일 기준으로 설계
-- 토큰 파일: `src/styles/tokens.css`
-- 전역 스타일 엔트리: `src/app/globals.css`
-  - `@import "../styles/tokens.css";`
-  - `@custom-variant dark (&:where(.dark, .dark *));`
-
-## 코드 스타일 · 린트
-
-| 명령                   | 설명                              |
-| ---------------------- | --------------------------------- |
-| `npm run lint`         | ESLint로 전체 검사                |
-| `npm run lint:fix`     | 자동 수정 가능한 ESLint 이슈 수정 |
-| `npm run format`       | Prettier로 포맷 적용              |
-| `npm run format:check` | CI용, 포맷 위반만 검사            |
+  - `openGraph`, `twitter`, `alternates.canonical`
+  - `robots.ts`, `sitemap.ts`
+  - 페이지별 확장 예시(`generateMetadata`)
 
 ## 폴더 구조
 
-`node_modules`, `.next`는 생략합니다.
-
 ```text
 seed-kit/
+├── .env.example
 ├── public/
 │   ├── og/
 │   │   └── og-default.svg
@@ -164,31 +128,93 @@ seed-kit/
 │   │   └── ui/
 │   │       ├── Button.tsx
 │   │       └── TextLink.tsx
+│   ├── features/
+│   ├── hooks/
 │   ├── lib/
 │   │   ├── api/
-│   │   │   └── json-placeholder.ts
 │   │   ├── query/
-│   │   │   └── query-client.ts
-│   │   ├── seo/
-│   │   │   └── site.ts
-│   │   └── README.md
+│   │   └── seo/
 │   ├── store/
 │   │   ├── index.ts
-│   │   ├── ui-store.ts
-│   │   └── README.md
-│   └── styles/
-│       └── tokens.css
+│   │   └── ui-store.ts
+│   ├── styles/
+│   │   └── tokens.css
+│   └── utils/
 └── README.md
 ```
 
-## 배포 전에 (최소 확인)
+## 상태관리 가이드 (Zustand)
 
-- `NEXT_PUBLIC_SITE_URL` 환경변수 설정
-- `npm run build` 성공 여부
-- `npm run lint` / `npm run format:check` 통과 여부
-- `public/og/og-default.svg`를 실제 OG 이미지로 교체했는지 확인
+- 위치: `src/store/ui-store.ts`
+- 현재 상태:
+  - `mobileMenuOpen`
+  - `theme` (`light` / `dark` / `system`)
+- persist 정책: `theme`만 localStorage 저장 (`seed-kit-ui`)
+- 확장 방법:
+  - 규모가 커지면 슬라이스 파일로 분리 (`ui`, `auth`, `toast` 등)
 
-## 라이선스 및 참고
+## TanStack Query 가이드
+
+- Provider: `src/components/providers/QueryProvider.tsx`
+- 기본 옵션: `src/lib/query/query-client.ts`
+  - `staleTime`, `gcTime`, `retry`, `refetchOnWindowFocus`
+- API 교체 포인트: `src/lib/api/*`
+  - 현재 `json-placeholder.ts`를 실제 API 클라이언트로 교체
+
+## SEO 가이드
+
+- 공통 설정: `src/lib/seo/site.ts`
+- 루트 메타: `src/app/layout.tsx`
+- 페이지 확장 예시: `src/app/about/page.tsx` (`generateMetadata`)
+- 크롤링 관련:
+  - `src/app/robots.ts`
+  - `src/app/sitemap.ts`
+
+favicon / OG 이미지:
+
+- favicon: `src/app/favicon.ico`
+- OG 기본 이미지: `public/og/og-default.svg`
+- 실서비스에서는 1200x630 PNG/JPG 교체 권장
+
+## 새 기능 추가 가이드
+
+- URL/페이지 중심 변경: `src/app`
+- 특정 도메인 기능: `src/features/<feature-name>`
+- 전역 재사용 UI: `src/components/ui`
+- 기능 전용 컴포넌트: `src/features/<feature-name>/components`
+- 공통 훅: `src/hooks`
+- 유틸 함수: `src/utils`
+
+## 공통 컴포넌트 추가 규칙
+
+- 도메인에 종속되면 `features` 내부에 둡니다.
+- 2개 이상 기능에서 재사용하면 `components/ui`로 올립니다.
+- 접근성(포커스/aria/semantic)을 기본으로 적용합니다.
+- 토큰/유틸 클래스 우선(`src/styles/tokens.css`, `globals.css`)
+
+## features 폴더 사용 기준
+
+- 기능 단위로 코드 경계를 만듭니다.
+- 권장 구조 예:
+  - `src/features/auth`
+  - `src/features/post`
+  - `src/features/portfolio`
+
+## 배포 전 확인 포인트
+
+- `NEXT_PUBLIC_SITE_URL` 실제 도메인 설정
+- `public/og/og-default.svg` 실서비스 이미지로 교체
+- `npm run lint` / `npm run format:check` 통과
+- `npm run build` 성공
+
+## 추후 확장 포인트
+
+- Supabase 연동 (`src/lib/supabase`, `src/features/auth`)
+- shadcn/ui 도입 (`src/components/ui` 점진 교체)
+- 인증/권한 (route group + middleware)
+- 블로그/포트폴리오 섹션 (`src/features/blog`, `src/features/portfolio`)
+
+## 참고
 
 - [Next.js 문서](https://nextjs.org/docs)
 - [Metadata API](https://nextjs.org/docs/app/building-your-application/optimizing/metadata)
