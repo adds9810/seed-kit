@@ -7,23 +7,24 @@
 
 - **Next.js 16** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (`@tailwindcss/postcss`)
+- **Tailwind 커스텀 토큰**: 모바일 퍼스트(`767px 이하` 모바일, `md=768px`), container/spacing/minimal color·radius·shadow
 - **ESLint 9** + `eslint-config-next` + **Prettier** + **eslint-config-prettier**
 - 개발 서버: **Turbopack** (`npm run dev`)
 - **`src/` 아래 실무형 디렉터리 골격**과 각 폴더 **역할 안내용 `README.md`**
   - `src/app`, `src/components`, `src/features`, `src/hooks`, `src/store`, `src/lib`, `src/utils`, `src/styles`, `public`
 - **경로 별칭**: `@/*` → `src/*` (`tsconfig.json`의 `baseUrl`, `paths`; `next.config.ts`에 정책 설명 주석)
 
-**Zustand**, **TanStack Query**, 공통 레이아웃·Tailwind 커스텀·SEO 패키지 등은 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
+**Zustand**, **TanStack Query**, 공통 레이아웃, SEO 패키지 등은 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
 
 ## 기술 스택 (현재)
 
-| 구분       | 내용                              |
-| ---------- | --------------------------------- |
-| 프레임워크 | Next.js (App Router)              |
-| 언어       | TypeScript                        |
-| 스타일     | Tailwind CSS v4                   |
-| 린트       | ESLint + eslint-config-next       |
-| 포맷       | Prettier + eslint-config-prettier |
+| 구분       | 내용                                 |
+| ---------- | ------------------------------------ |
+| 프레임워크 | Next.js (App Router)                 |
+| 언어       | TypeScript                           |
+| 스타일     | Tailwind CSS v4 + 모바일 퍼스트 토큰 |
+| 린트       | ESLint + eslint-config-next          |
+| 포맷       | Prettier + eslint-config-prettier    |
 
 ## 사전 요구 사항
 
@@ -68,6 +69,19 @@ npm run start
 - 설정: `tsconfig.json` 의 `baseUrl`, `paths` (`"@/*": ["./src/*"]`)
 - 앱 코드는 `@/components/...`, `@/features/...` 형태로 맞추면 됩니다.
 
+## Tailwind 기준 (모바일 퍼스트)
+
+- 브레이크포인트 기준
+  - `md`: `48rem` (768px)
+  - 따라서 `767px 이하`를 모바일 기준으로 설계
+- 토큰 파일: `src/styles/tokens.css`
+  - container 최대폭: `--container-max`
+  - 섹션 간격: `--space-section`, `--space-section-md`
+  - 최소 디자인 토큰: `--color-brand-600`, `--radius-md`, `--shadow-sm`
+- 전역 스타일 엔트리: `src/app/globals.css`
+  - `@import "../styles/tokens.css";`
+  - `page-container`, `section-gap` 유틸 클래스 포함
+
 ## 코드 스타일 · 린트
 
 | 명령                   | 설명                              |
@@ -104,7 +118,8 @@ seed-kit/
 │   ├── store/              # 클라이언트 전역 상태
 │   │   └── README.md
 │   ├── styles/             # 전역 CSS 확장용 (엔트리는 현재 app/globals.css)
-│   │   └── README.md
+│   │   ├── README.md
+│   │   └── tokens.css
 │   └── utils/              # 순수 유틸
 │       └── README.md
 ├── .gitignore
