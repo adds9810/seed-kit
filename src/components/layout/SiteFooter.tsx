@@ -5,7 +5,7 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-auto border-t border-[--color-border] bg-[--color-muted]/40 py-6">
-      <div className="page-container flex flex-col gap-3 text-sm text-zinc-600 md:flex-row md:items-center md:justify-between">
+      <div className="page-container flex flex-col gap-3 text-sm text-[--text-secondary] md:flex-row md:items-center md:justify-between">
         <p>
           © {year}{" "}
           <span className="font-medium text-[--color-foreground]">seed-kit</span>

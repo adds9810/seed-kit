@@ -1,9 +1,23 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #111827;
+  --text-secondary: #52525b;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --text-secondary: #a1a1aa;
+  --color-surface: #18181b;
+  --color-muted: #27272a;
+  --color-border: #3f3f46;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.35);
 }
 
 @theme inline {
