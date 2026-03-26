@@ -1,20 +1,19 @@
 # seed-kit
 
 사이드 프로젝트·포트폴리오용으로 재사용할 **Next.js 프론트엔드 스타터 키트**입니다.  
-반복되는 초기 세팅을 줄이고, 이후 단계에서 폴더 구조·상태관리·SEO 등을 확장할 예정입니다.
+반복되는 초기 세팅을 줄이고, 필요에 따라 폴더 구조·상태관리·SEO 등을 확장하기 쉽게 구성했습니다.
 
-## 현재 진행 단계 (1단계 완료)
-
-**1단계**에서는 다음만 구성했습니다.
+## 프로젝트에 포함된 것
 
 - **Next.js 16** (App Router) + **React 19** + **TypeScript**
 - **Tailwind CSS v4** (`@tailwindcss/postcss`)
-- **ESLint 9** (flat config) + `eslint-config-next` (Core Web Vitals + TypeScript 규칙)
-- **Prettier** + **eslint-config-prettier** (ESLint와 포맷 규칙 충돌 방지, Prettier가 스타일 전담)
-- 경로 별칭 **`@/*` → `src/*`** (`tsconfig.json`)
+- **ESLint 9** + `eslint-config-next` + **Prettier** + **eslint-config-prettier**
 - 개발 서버: **Turbopack** (`npm run dev`)
+- **`src/` 아래 실무형 디렉터리 골격**과 각 폴더 **역할 안내용 `README.md`**
+  - `src/app`, `src/components`, `src/features`, `src/hooks`, `src/store`, `src/lib`, `src/utils`, `src/styles`, `public`
+- **경로 별칭**: `@/*` → `src/*` (`tsconfig.json`의 `baseUrl`, `paths`; `next.config.ts`에 정책 설명 주석)
 
-아직 **Zustand**, **TanStack Query**, 공통 레이아웃·`features` 폴더 골격, SEO 패키지 등은 **다음 단계**에서 추가합니다.
+**Zustand**, **TanStack Query**, 공통 레이아웃·Tailwind 커스텀·SEO 패키지 등은 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
 
 ## 기술 스택 (현재)
 
@@ -28,8 +27,8 @@
 
 ## 사전 요구 사항
 
-- **Node.js** 20 이상 권장 (Next.js 공식 권장과 맞춤)
-- **npm** (이 저장소는 npm 기준으로 잠금 파일이 있습니다)
+- **Node.js** 20 이상 권장
+- **npm** (잠금 파일: `package-lock.json`)
 
 ## 설치 방법
 
@@ -47,8 +46,8 @@ npm install
 npm run dev
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 기본 페이지가 표시됩니다.  
-소스는 `src/app/page.tsx`를 수정하면 됩니다.
+브라우저에서 [http://localhost:3000](http://localhost:3000) 을 열면 됩니다.  
+페이지 소스는 `src/app/page.tsx` 입니다.
 
 ### 프로덕션 빌드
 
@@ -62,6 +61,13 @@ npm run build
 npm run start
 ```
 
+## 경로 별칭 `@/`
+
+`import { … } from "@/lib/…"` 처럼 **`src/` 기준**으로 import 할 수 있습니다.
+
+- 설정: `tsconfig.json` 의 `baseUrl`, `paths` (`"@/*": ["./src/*"]`)
+- 앱 코드는 `@/components/...`, `@/features/...` 형태로 맞추면 됩니다.
+
 ## 코드 스타일 · 린트
 
 | 명령                   | 설명                              |
@@ -71,26 +77,41 @@ npm run start
 | `npm run format`       | Prettier로 포맷 적용              |
 | `npm run format:check` | CI용, 포맷 위반만 검사            |
 
-ESLint 설정은 `eslint.config.mjs`이며, **마지막에 `eslint-config-prettier`를 넣어** 포맷 관련 규칙은 Prettier에 맡깁니다.
+## 폴더 구조
 
-## 현재 폴더 구조 (1단계 기준)
-
-소스와 설정 위주로 정리했습니다. (`node_modules`, `.next`는 생략)
+`node_modules`, `.next` 는 생략합니다.
 
 ```text
 seed-kit/
-├── public/                 # 정적 파일 (SVG 등)
+├── public/
+│   ├── README.md           # 정적 자산 역할 안내
+│   └── …                   # SVG 등
 ├── src/
-│   └── app/                # App Router
-│       ├── favicon.ico
-│       ├── globals.css     # 전역 CSS + Tailwind
-│       ├── layout.tsx      # 루트 레이아웃
-│       └── page.tsx        # 홈 페이지
+│   ├── app/                # App Router (라우트·layout·page)
+│   │   ├── README.md
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/         # 재사용 UI
+│   │   └── README.md
+│   ├── features/           # 기능·도메인 단위 모듈
+│   │   └── README.md
+│   ├── hooks/              # 공통 커스텀 훅
+│   │   └── README.md
+│   ├── lib/                # 라이브러리성 설정·클라이언트
+│   │   └── README.md
+│   ├── store/              # 클라이언트 전역 상태
+│   │   └── README.md
+│   ├── styles/             # 전역 CSS 확장용 (엔트리는 현재 app/globals.css)
+│   │   └── README.md
+│   └── utils/              # 순수 유틸
+│       └── README.md
 ├── .gitignore
 ├── .prettierignore
 ├── .prettierrc
 ├── eslint.config.mjs
-├── next-env.d.ts           # Next.js TypeScript 선언 (자동)
+├── next-env.d.ts
 ├── next.config.ts
 ├── package.json
 ├── package-lock.json
@@ -99,12 +120,12 @@ seed-kit/
 └── tsconfig.json
 ```
 
-2단계부터 `src/components`, `src/features`, `src/lib` 등 실무형 골격을 나눌 예정입니다.
+각 `README.md` 는 해당 폴더에 무엇을 두면 좋은지 **한눈에 보이도록** 최소 설명만 적어 두었습니다.
 
-## 배포 전에 (지금 단계에서 할 수 있는 최소 확인)
+## 배포 전에 (최소 확인)
 
-- `npm run build` 가 로컬에서 성공하는지
-- `npm run lint` / `npm run format:check` 통과 여부 (CI에 넣을 때)
+- `npm run build` 성공 여부
+- `npm run lint` / `npm run format:check` 통과 여부
 
 ## 라이선스 및 참고
 
