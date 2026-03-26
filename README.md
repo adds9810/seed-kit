@@ -90,6 +90,7 @@ npm run format:check
 - 공통 레이아웃: `header` / `main` / `footer`, skip link
 - UI 상태: 모바일 메뉴 열림/닫힘, 테마(light/dark/system)
 - Query: `QueryProvider`, 기본 `QueryClient`, 외부 API 예제(JSONPlaceholder)
+- 에러/로딩 UX: `error.tsx`, `loading.tsx`, `not-found.tsx`
 - SEO:
   - `metadataBase`, `title default/template`
   - `description`, `keywords`
@@ -110,9 +111,12 @@ seed-kit/
 │   ├── app/
 │   │   ├── about/
 │   │   │   └── page.tsx
+│   │   ├── error.tsx
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   ├── not-found.tsx
 │   │   ├── page.tsx
 │   │   ├── robots.ts
 │   │   └── sitemap.ts
@@ -175,6 +179,15 @@ favicon / OG 이미지:
 - favicon: `src/app/favicon.ico`
 - OG 기본 이미지: `public/og/og-default.svg`
 - 실서비스에서는 1200x630 PNG/JPG 교체 권장
+
+## 에러/로딩 UX 가이드
+
+- 전역 로딩: `src/app/loading.tsx`
+  - 라우트 전환/초기 로딩 구간에서 스켈레톤 UI를 표시합니다.
+- 전역 에러: `src/app/error.tsx`
+  - 런타임 에러 발생 시 안내 메시지와 `다시 시도(reset)` 동작을 제공합니다.
+- 404 페이지: `src/app/not-found.tsx`
+  - 존재하지 않는 경로 접근 시 기본 안내와 홈 이동 액션을 제공합니다.
 
 ## 새 기능 추가 가이드
 
