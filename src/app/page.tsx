@@ -1,3 +1,4 @@
+import { JsonPlaceholderPostSample } from "@/components/examples/JsonPlaceholderPostSample";
 import { ButtonLink } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
 
@@ -39,7 +40,17 @@ export default function Home() {
             <li>스킵 링크로 본문(#main-content)으로 이동</li>
             <li>공용 UI: Button, ButtonLink, TextLink</li>
             <li>Zustand UI 스토어: 모바일 메뉴, 테마(라이트·다크·시스템)</li>
+            <li>TanStack Query: 서버 상태 캐시, QueryProvider, JSONPlaceholder 데모</li>
           </ul>
+        </section>
+
+        <section aria-labelledby="home-query-title">
+          <h2 id="home-query-title" className="text-lg font-semibold md:text-xl">
+            서버 상태 (Query)
+          </h2>
+          <div className="mt-4">
+            <JsonPlaceholderPostSample />
+          </div>
         </section>
       </div>
     </div>

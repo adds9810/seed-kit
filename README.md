@@ -21,8 +21,9 @@
 - **공용 UI**: `Button`, `ButtonLink`, `TextLink` (`src/components/ui`)
 - **페이지**: 홈(`/`), 소개(`/about`) — 제목 계층(`h1`~`h2`)·섹션 `aria-labelledby` 정리
 - **메타데이터 기본값**: 사이트명·`title` 템플릿(`%s | seed-kit`)·기본 `description` (검색·SNS용 세부 설정은 이후 보강)
+- **TanStack Query**: `QueryProvider`로 앱을 감싸고, `src/lib/query/query-client.ts`에서 `staleTime` 등 기본 옵션 설정. 홈에 JSONPlaceholder `useQuery` 예시(`JsonPlaceholderPostSample`) — 실제 API는 `src/lib/api`를 교체하면 됨
 
-**TanStack Query**, 검색엔진용 메타데이터 전체 패키지(OG 이미지·sitemap 등)는 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
+검색엔진용 메타데이터 전체 패키지(OG 이미지·sitemap 등)는 포함하지 않았습니다. 프로젝트에 맞게 추가하면 됩니다.
 
 ## 기술 스택 (현재)
 
@@ -32,6 +33,7 @@
 | 언어            | TypeScript                           |
 | 스타일          | Tailwind CSS v4 + 모바일 퍼스트 토큰 |
 | 클라이언트 상태 | Zustand (`persist` 로 테마만 저장)   |
+| 서버 상태       | TanStack Query (React Query)         |
 | 린트            | ESLint + eslint-config-next          |
 | 포맷            | Prettier + eslint-config-prettier    |
 
@@ -80,6 +82,13 @@ npm run start
 - 설정: `tsconfig.json` 의 `baseUrl`, `paths` (`"@/*": ["./src/*"]`)
 - 앱 코드는 `@/components/...`, `@/features/...` 형태로 맞추면 됩니다.
 
+## TanStack Query
+
+- **Provider**: `src/components/providers/QueryProvider.tsx` — 클라이언트에서 `QueryClient`를 한 번만 생성(`useState`)
+- **기본 옵션**: `src/lib/query/query-client.ts`의 `createQueryClient()` — `staleTime` 60초, `gcTime` 5분, `retry` 1회, `refetchOnWindowFocus` 끔
+- **예시**: `src/components/examples/JsonPlaceholderPostSample.tsx` + `src/lib/api/json-placeholder.ts`
+- **교체 방법**: `queryFn`이 호출하는 모듈을 자체 API 클라이언트로 바꾸고, `queryKey` 규칙만 프로젝트에 맞게 통일하면 됩니다.
+
 ## Zustand (`src/store`)
 
 - **`useUiStore`**: `mobileMenuOpen`, `toggleMobileMenu`, `closeMobileMenu`, `theme`, `setTheme`
@@ -126,14 +135,17 @@ seed-kit/
 │   │   │   └── page.tsx    # 소개 페이지
 │   │   ├── favicon.ico
 │   │   ├── globals.css
-│   │   ├── layout.tsx      # 헤더·main·푸터·스킵 링크·테마 동기화
-│   │   └── page.tsx        # 홈
+│   │   ├── layout.tsx      # QueryProvider·헤더·main·푸터·스킵 링크·테마 동기화
+│   │   └── page.tsx        # 홈 (Query 데모 섹션 포함)
 │   ├── components/         # 재사용 UI
 │   │   ├── README.md
+│   │   ├── examples/
+│   │   │   └── JsonPlaceholderPostSample.tsx
 │   │   ├── layout/
 │   │   │   ├── SiteHeader.tsx
 │   │   │   └── SiteFooter.tsx
 │   │   ├── providers/
+│   │   │   ├── QueryProvider.tsx
 │   │   │   └── ThemeAttributeSync.tsx
 │   │   └── ui/
 │   │       ├── Button.tsx  # Button + ButtonLink
@@ -143,7 +155,11 @@ seed-kit/
 │   ├── hooks/              # 공통 커스텀 훅
 │   │   └── README.md
 │   ├── lib/                # 라이브러리성 설정·클라이언트
-│   │   └── README.md
+│   │   ├── README.md
+│   │   ├── api/
+│   │   │   └── json-placeholder.ts
+│   │   └── query/
+│   │       └── query-client.ts
 │   ├── store/              # 클라이언트 전역 상태 (Zustand)
 │   │   ├── README.md
 │   │   ├── index.ts
