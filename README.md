@@ -8,6 +8,7 @@
 - 모바일 퍼스트 반응형 기준(767px 이하 모바일)
 - App Router 기반 SEO/접근성 기본 구조
 - Zustand(클라이언트 UI 상태), TanStack Query(서버 상태) 기본 연결
+- GitHub Actions CI로 린트/포맷/빌드 자동 검증
 - 실전 프로젝트로 바로 시작 가능한 폴더 구조와 가이드 문서
 
 ## 기술 스택
@@ -72,6 +73,21 @@ npm run lint
 npm run format:check
 ```
 
+## CI (GitHub Actions)
+
+- 워크플로 파일: `.github/workflows/ci.yml`
+- 트리거:
+  - `pull_request`
+  - `push` to `main`, `master`
+- 실행 항목:
+  - `npm ci`
+  - `npm run lint`
+  - `npm run format:check`
+  - `npm run build`
+- 실행 환경:
+  - Ubuntu latest
+  - Node.js 20 + npm cache
+
 ## 환경변수
 
 예시 파일: `.env.example`
@@ -102,6 +118,9 @@ npm run format:check
 
 ```text
 seed-kit/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
 ├── .env.example
 ├── public/
 │   ├── og/
