@@ -137,6 +137,11 @@ export const guideProgressPhases: GuideProgressPhase[] = [
         title: "홈에서 구성·Query 데모 제거, `/examples/query`로 이동",
         status: "done",
       },
+      {
+        id: "readme-into-guide",
+        title: "README 기술 가이드 본문을 가이드 `개발 노트`로 이전, 홈·소개는 서비스용",
+        status: "done",
+      },
     ],
   },
   {

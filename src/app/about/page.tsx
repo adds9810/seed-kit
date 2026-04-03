@@ -1,10 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { ButtonLink } from "@/components/ui/Button";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = "소개";
-  const description = "seed-kit 스타터 구성과 목적을 설명합니다.";
+  const description = "프로젝트·서비스 소개 페이지입니다.";
 
   return {
     title,
@@ -32,34 +32,39 @@ export default function AboutPage() {
         <header className="space-y-3">
           <p className="text-sm font-medium text-[--color-brand-600]">About</p>
           <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
-            이 스타터에 대해
+            프로젝트 소개
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
-            사이드 프로젝트와 포트폴리오를 빠르게 시작하기 위한 최소 구성입니다.
-            페이지별 제목은 메타데이터의 title 템플릿과 함께 쓸 수 있습니다.
+            팀 비전, 제공 기능, 타깃 사용자 등 실제 서비스에 맞는 문구로 이
+            페이지 전체를 바꿔 쓰면 됩니다.
           </p>
         </header>
 
-        <section aria-labelledby="about-goals-title">
-          <h2 id="about-goals-title" className="text-lg font-semibold md:text-xl">
-            목표
+        <section aria-labelledby="about-story-title">
+          <h2
+            id="about-story-title"
+            className="text-lg font-semibold md:text-xl"
+          >
+            우리가 하는 일
           </h2>
           <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[--text-secondary] md:text-base">
-            <li>반복되는 초기 세팅 시간 줄이기</li>
-            <li>확장 가능한 폴더 구조 유지</li>
-            <li>모바일 우선·접근 가능한 마크업 기본값</li>
+            <li>문제 정의와 해결 방향을 한두 문단으로 적습니다.</li>
+            <li>주요 기능·차별점은 목록으로 정리합니다.</li>
+            <li>필요하면 타임라인·팀 소개 섹션을 아래에 이어 붙입니다.</li>
           </ul>
         </section>
 
-        <section aria-labelledby="about-next-title">
-          <h2 id="about-next-title" className="text-lg font-semibold md:text-xl">
-            다음에 붙이기 좋은 것
+        <section aria-labelledby="about-contact-title">
+          <h2
+            id="about-contact-title"
+            className="text-lg font-semibold md:text-xl"
+          >
+            문의
           </h2>
           <p className="mt-3 text-sm text-[--text-secondary] md:text-base">
-            UI 외 전역 상태, 서버 상태 라이브러리, SEO 메타 보강 등은 프로젝트 성격에
-            맞게 추가하면 됩니다.
+            이메일, 폼 링크, SNS 등 연락 채널을 여기에 두면 됩니다.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href="/" variant="outline">
               홈으로
             </ButtonLink>

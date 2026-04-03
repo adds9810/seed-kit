@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 
 import { guideComponentTopics } from "./_data/component-guides";
+import { guideDeveloperTopics } from "./_data/developer-topics";
 import { guideProgressPhases } from "./_data/progress";
 import {
   guideCurrentSetup,
@@ -25,7 +26,7 @@ function statusLabel(status: GuideProgressStatus): string {
 export async function generateMetadata(): Promise<Metadata> {
   const title = "가이드";
   const description =
-    "스타터 진행 상황, 기술 스택·구성 요약, 컴포넌트 사용 가이드.";
+    "진행 상황, 스택·구성, 컴포넌트·폴더, 개발 노트(Zustand, Query, SEO 등).";
 
   return {
     title,
@@ -56,8 +57,9 @@ export default function GuidePage() {
             가이드 및 진행 상황
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
-            README와 저장소 기준으로 정리한 진행 단계와, 자주 쓰는 컴포넌트
-            위치·역할입니다. 내용은 `_data` 아래에서 수정해 확장하면 됩니다.
+            스타터 구성·진행·기술 메모는 이 페이지와 `src/app/guide/_data`에만
+            둡니다. 홈(`page.tsx`)과 소개(`about`)는 실제 서비스 문구용으로
+            비워 두었습니다.
           </p>
         </header>
 
@@ -184,6 +186,30 @@ export default function GuidePage() {
           <pre className="mt-4 overflow-x-auto rounded-[--radius-md] border border-[--color-border] bg-[--color-muted]/20 p-4 text-xs leading-relaxed md:text-sm">
             <code>{guideFolderStructureTree}</code>
           </pre>
+        </section>
+
+        <section aria-labelledby="guide-dev-title">
+          <h2
+            id="guide-dev-title"
+            className="text-lg font-semibold md:text-xl"
+          >
+            개발 노트
+          </h2>
+          <div className="mt-4 space-y-6">
+            {guideDeveloperTopics.map((topic) => (
+              <article
+                key={topic.id}
+                className="rounded-[--radius-md] border border-[--color-border] bg-[--color-surface] p-4 shadow-[--shadow-sm] md:p-5"
+              >
+                <h3 className="text-base font-semibold">{topic.title}</h3>
+                <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-[--text-secondary] md:text-base">
+                  {topic.bullets.map((b) => (
+                    <li key={b}>{b}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
         </section>
 
         <div>
