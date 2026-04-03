@@ -8,6 +8,7 @@ import { useUiStore, type ThemePreference } from "@/store";
 const navItems = [
   { href: "/", label: "홈" },
   { href: "/about", label: "소개" },
+  { href: "/guide", label: "가이드" },
 ] as const;
 
 export function SiteHeader() {
