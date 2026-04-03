@@ -32,6 +32,9 @@ export const guideFolderStructureTree = `seed-kit/
 │   ├── app/
 │   │   ├── about/
 │   │   │   └── page.tsx
+│   │   ├── examples/
+│   │   │   └── query/
+│   │   │       └── page.tsx
 │   │   ├── guide/
 │   │   │   ├── _data/
 │   │   │   └── page.tsx

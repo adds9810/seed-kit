@@ -1,4 +1,3 @@
-import { JsonPlaceholderPostSample } from "@/components/examples/JsonPlaceholderPostSample";
 import { ButtonLink } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
 
@@ -23,33 +22,27 @@ export default function Home() {
             767px 이하를 모바일 기준으로 두고, 768px 이상에서 점진적으로 확장하는
             Tailwind 토큰과 공통 레이아웃(헤더·본문·푸터)이 적용되어 있습니다.
           </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <p className="mt-3 max-w-2xl text-sm text-[--text-secondary] md:text-base">
+            진행 단계·스택·컴포넌트 안내는{" "}
+            <TextLink href="/guide" className="inline">
+              가이드 페이지
+            </TextLink>
+            에 모아 두었습니다. Query 데모는{" "}
+            <TextLink href="/examples/query" className="inline">
+              예제 페이지
+            </TextLink>
+            로 분리했습니다.
+          </p>
+          <div className="mt-6 flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
             <ButtonLink href="/about" variant="primary">
               소개 페이지
             </ButtonLink>
-            <TextLink href="/about">텍스트 링크로 이동 →</TextLink>
-          </div>
-        </section>
-
-        <section aria-labelledby="home-structure-title">
-          <h2 id="home-structure-title" className="text-lg font-semibold md:text-xl">
-            구성 요소
-          </h2>
-          <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[--text-secondary] md:text-base">
-            <li>시맨틱 레이아웃: 헤더, 메인, 푸터</li>
-            <li>스킵 링크로 본문(#main-content)으로 이동</li>
-            <li>공용 UI: Button, ButtonLink, TextLink</li>
-            <li>Zustand UI 스토어: 모바일 메뉴, 테마(라이트·다크·시스템)</li>
-            <li>TanStack Query: 서버 상태 캐시, QueryProvider, JSONPlaceholder 데모</li>
-          </ul>
-        </section>
-
-        <section aria-labelledby="home-query-title">
-          <h2 id="home-query-title" className="text-lg font-semibold md:text-xl">
-            서버 상태 (Query)
-          </h2>
-          <div className="mt-4">
-            <JsonPlaceholderPostSample />
+            <ButtonLink href="/guide" variant="outline">
+              가이드
+            </ButtonLink>
+            <ButtonLink href="/examples/query" variant="outline">
+              Query 예제
+            </ButtonLink>
           </div>
         </section>
       </div>

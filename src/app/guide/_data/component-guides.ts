@@ -52,6 +52,7 @@ export const guideComponentTopics: GuideComponentTopic[] = [
     summary: "Query + `src/lib/api/json-placeholder` 사용 예시입니다.",
     bullets: [
       "실제 API로 바꿀 때는 `src/lib/api` 모듈을 교체하면 됩니다.",
+      "라이브 데모: `/examples/query`",
       "로딩·에러 UI 패턴을 참고용으로 복사해 쓸 수 있습니다.",
     ],
   },

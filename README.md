@@ -113,6 +113,12 @@ npm run format:check
   - `openGraph`, `twitter`, `alternates.canonical`
   - `robots.ts`, `sitemap.ts`
   - 페이지별 확장 예시(`generateMetadata`)
+- 앱 내 가이드: `/guide` — 진행 단계·기술 스택·컴포넌트 안내(`src/app/guide`, 편집은 주로 `_data`)
+- Query 데모: `/examples/query` — JSONPlaceholder 샘플(홈에서는 링크만 제공)
+
+## 앱 내 가이드·예제를 나눈 이유
+
+홈에 진행 상황이랑 구성 설명을 전부 두면 스크롤이 길어져서, 제가 보기에도 수정할 때 찾기 번거롭더라고요. 그래서 **가이드는 `/guide`**, **Query 라이브 데모는 `/examples/query`**로 빼 두었습니다. 가이드 문구·체크리스트는 `src/app/guide/_data` 아래만 손보면 됩니다.
 
 ## 폴더 구조
 
@@ -129,6 +135,12 @@ seed-kit/
 ├── src/
 │   ├── app/
 │   │   ├── about/
+│   │   │   └── page.tsx
+│   │   ├── examples/
+│   │   │   └── query/
+│   │   │       └── page.tsx
+│   │   ├── guide/
+│   │   │   ├── _data/
 │   │   │   └── page.tsx
 │   │   ├── error.tsx
 │   │   ├── favicon.ico
@@ -188,7 +200,7 @@ seed-kit/
 
 - 공통 설정: `src/lib/seo/site.ts`
 - 루트 메타: `src/app/layout.tsx`
-- 페이지 확장 예시: `src/app/about/page.tsx` (`generateMetadata`)
+- 페이지 확장 예시: `src/app/about/page.tsx`, `src/app/guide/page.tsx`, `src/app/examples/query/page.tsx` (`generateMetadata`)
 - 크롤링 관련:
   - `src/app/robots.ts`
   - `src/app/sitemap.ts`

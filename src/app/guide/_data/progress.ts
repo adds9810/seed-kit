@@ -124,12 +124,17 @@ export const guideProgressPhases: GuideProgressPhase[] = [
   },
   {
     id: "in-app-guide",
-    title: "앱 내 가이드",
-    summary: "진행 상황·컴포넌트 설명을 `/guide`에서 관리.",
+    title: "앱 내 가이드·예제 분리",
+    summary: "홈을 가볍게 두고 `/guide`, `/examples/query`로 나눔.",
     items: [
       {
         id: "guide-route",
         title: "`src/app/guide` 라우트 및 `_data` 정적 참조",
+        status: "done",
+      },
+      {
+        id: "home-slim-query-example",
+        title: "홈에서 구성·Query 데모 제거, `/examples/query`로 이동",
         status: "done",
       },
     ],
