@@ -30,27 +30,32 @@ export const guideFolderStructureTree = `seed-kit/
 │   └── README.md
 ├── src/
 │   ├── app/
-│   │   ├── about/
+│   │   ├── (site)/
+│   │   │   ├── about/
+│   │   │   │   └── page.tsx
+│   │   │   ├── examples/
+│   │   │   │   └── query/
+│   │   │   │       └── page.tsx
+│   │   │   ├── layout.tsx
+│   │   │   ├── loading.tsx
 │   │   │   └── page.tsx
-│   │   ├── examples/
-│   │   │   └── query/
-│   │   │       └── page.tsx
 │   │   ├── guide/
 │   │   │   ├── _data/
+│   │   │   ├── layout.tsx
 │   │   │   └── page.tsx
 │   │   ├── error.tsx
 │   │   ├── favicon.ico
 │   │   ├── globals.css
 │   │   ├── layout.tsx
-│   │   ├── loading.tsx
 │   │   ├── not-found.tsx
-│   │   ├── page.tsx
 │   │   ├── robots.ts
 │   │   └── sitemap.ts
 │   ├── components/
 │   │   ├── examples/
 │   │   │   └── JsonPlaceholderPostSample.tsx
 │   │   ├── layout/
+│   │   │   ├── GuideHeader.tsx
+│   │   │   ├── PublicSiteShell.tsx
 │   │   │   ├── SiteHeader.tsx
 │   │   │   └── SiteFooter.tsx
 │   │   ├── providers/

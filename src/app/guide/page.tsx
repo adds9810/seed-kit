@@ -58,8 +58,9 @@ export default function GuidePage() {
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
             스타터 구성·진행·기술 메모는 이 페이지와 `src/app/guide/_data`에만
-            둡니다. 홈(`page.tsx`)과 소개(`about`)는 실제 서비스 문구용으로
-            비워 두었습니다.
+            둡니다. 프로덕션에서는 `/guide`가 열리지 않습니다. 목차는 넓은 화면에서
+            왼쪽, 모바일에서는 상단 접기 블록으로 보이며, `_data/guide-nav.ts`와
+            본문 `h2` id를 맞춰 주세요.
           </p>
         </header>
 

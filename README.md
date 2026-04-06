@@ -2,9 +2,9 @@
 
 `Next.js`(App Router) + `React` + `TypeScript` + `Tailwind CSS v4`로 바로 화면을 붙이기 위한 가벼운 프론트엔드 스타터입니다.
 
-**로컬에서 `npm run dev` 실행 후 브라우저의 `/guide`로 들어가면** 진행 상황, 기술 스택, 폴더 구조, 컴포넌트·개발 노트(Zustand, Query, SEO 등)를 한곳에서 볼 수 있습니다. 문구·체크리스트는 `src/app/guide/_data`에서 수정합니다.
+**`/guide`는 개발 전용입니다.** `npm run dev`로만 쓰는 것을 전제로 하고, 프로덕션(`next start` 등)에서는 `src/middleware.ts`가 `/guide` 요청을 404로 돌립니다. 가이드 레이아웃에서도 `NODE_ENV === "production"`이면 `notFound()`를 호출합니다. 진행 상황·스택·폴더·컴포넌트·개발 노트는 `src/app/guide/_data`에서 다룹니다.
 
-**홈(`src/app/page.tsx`)과 소개(`src/app/about/page.tsx`)**는 스타터 설명을 넣지 않고, 실제 서비스·제품 카피를 채우는 용도로 비워 두었습니다.
+**일반 화면**은 `src/app/(site)/page.tsx`, `src/app/(site)/about/page.tsx`에 두었습니다. URL은 그대로 `/`, `/about`이며, 헤더·푸터는 공개 사이트용(`PublicSiteShell`)만 씁니다. 제품명은 `.env`의 `NEXT_PUBLIC_APP_NAME`으로 바꿀 수 있습니다.
 
 ## 사전 요구 사항
 
@@ -62,6 +62,7 @@ npm run format:check
 파일: `.env.example`
 
 - `NEXT_PUBLIC_SITE_URL`: canonical, OG, sitemap 기준 URL
+- `NEXT_PUBLIC_APP_NAME`: 헤더·푸터 등에 쓰는 표시 이름(선택)
 - `NEXT_PUBLIC_TWITTER_HANDLE`: Twitter metadata creator
 
 - `NEXT_PUBLIC_` 값은 브라우저에 노출됩니다.
@@ -71,7 +72,7 @@ npm run format:check
 
 | 구분 | 위치 |
 | --- | --- |
-| 스타터·진행·스택·개발 메모 | 앱 `/guide` + `src/app/guide/_data` |
+| 스타터·진행·스택·개발 메모 | 개발 시에만 `/guide` + `src/app/guide/_data` |
 | 설치·실행·CI·환경변수 | 이 README |
 | 라우트별 예시 | `/examples/query` 등 |
 

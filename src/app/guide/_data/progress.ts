@@ -142,6 +142,16 @@ export const guideProgressPhases: GuideProgressPhase[] = [
         title: "README 기술 가이드 본문을 가이드 `개발 노트`로 이전, 홈·소개는 서비스용",
         status: "done",
       },
+      {
+        id: "split-headers-prod-guide",
+        title: "공개 헤더(`SiteHeader`)와 가이드 헤더(`GuideHeader`) 분리, 프로덕션에서 `/guide` 404",
+        status: "done",
+      },
+      {
+        id: "guide-toc",
+        title: "가이드 섹션 목차(모바일 접기·데스크톱 사이드바, `_data/guide-nav`)",
+        status: "done",
+      },
     ],
   },
   {

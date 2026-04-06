@@ -7,27 +7,21 @@ import { TextLink } from "@/components/ui/TextLink";
 import { siteConfig } from "@/lib/seo/site";
 import { useUiStore, type ThemePreference } from "@/store";
 
-const baseNavItems = [
+const guideNavItems = [
   { href: "/", label: "홈" },
-  { href: "/about", label: "소개" },
+  { href: "/examples/query", label: "Query 예제" },
 ] as const;
 
-const showDevGuide = process.env.NODE_ENV === "development";
-
-export function SiteHeader() {
+export function GuideHeader() {
   const mobileMenuOpen = useUiStore((s) => s.mobileMenuOpen);
   const toggleMobileMenu = useUiStore((s) => s.toggleMobileMenu);
   const closeMobileMenu = useUiStore((s) => s.closeMobileMenu);
   const theme = useUiStore((s) => s.theme);
   const setTheme = useUiStore((s) => s.setTheme);
 
-  const navItems = showDevGuide
-    ? [...baseNavItems, { href: "/guide", label: "가이드" } as const]
-    : baseNavItems;
-
   const navList = (
     <>
-      {navItems.map((item) => (
+      {guideNavItems.map((item) => (
         <li key={item.href}>
           <TextLink
             href={item.href}
@@ -42,18 +36,23 @@ export function SiteHeader() {
   );
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[--color-border] bg-[--color-surface]/80 shadow-[--shadow-sm] backdrop-blur-md supports-[backdrop-filter]:bg-[--color-surface]/70">
+    <header className="sticky top-0 z-50 border-b border-amber-600/40 bg-[--color-surface]/80 shadow-[--shadow-sm] backdrop-blur-md supports-[backdrop-filter]:bg-[--color-surface]/70">
       <div className="page-container relative flex h-14 items-center gap-3">
-        <Link
-          href="/"
-          className="shrink-0 text-base font-semibold tracking-tight text-[--color-foreground] focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-brand-600] focus-visible:ring-offset-2"
-        >
-          {siteConfig.name}
-        </Link>
+        <div className="flex min-w-0 shrink-0 items-center gap-2">
+          <Link
+            href="/"
+            className="truncate text-base font-semibold tracking-tight text-[--color-foreground] focus:outline-none focus-visible:ring-2 focus-visible:ring-[--color-brand-600] focus-visible:ring-offset-2"
+          >
+            {siteConfig.name}
+          </Link>
+          <span className="hidden shrink-0 rounded-[--radius-md] bg-amber-600/15 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-200 sm:inline">
+            가이드 · 개발
+          </span>
+        </div>
 
         <nav
           className="hidden md:flex md:flex-1 md:flex-row md:items-center md:justify-end"
-          aria-label="주요 내비게이션"
+          aria-label="가이드 내비게이션"
         >
           <ul className="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
             {navList}
@@ -61,11 +60,14 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0">
-          <label htmlFor="theme-select" className="sr-only">
+          <span className="rounded-[--radius-md] bg-amber-600/15 px-2 py-0.5 text-xs font-medium text-amber-800 dark:text-amber-200 sm:hidden">
+            개발
+          </span>
+          <label htmlFor="guide-theme-select" className="sr-only">
             색 테마
           </label>
           <select
-            id="theme-select"
+            id="guide-theme-select"
             className="native-theme-select max-w-[7rem] rounded-[--radius-md] border border-[--color-border] py-1.5 pl-2 pr-7 text-sm md:max-w-[9rem]"
             value={theme}
             aria-label="색 테마: 라이트, 다크, 시스템"
@@ -80,7 +82,7 @@ export function SiteHeader() {
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-[--radius-md] border border-[--color-border] bg-[--color-surface] text-[--color-foreground] md:hidden"
             aria-expanded={mobileMenuOpen}
-            aria-controls="primary-navigation-mobile"
+            aria-controls="guide-primary-navigation-mobile"
             aria-label={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
             onClick={toggleMobileMenu}
           >
@@ -107,8 +109,8 @@ export function SiteHeader() {
         <MobileNavPortal
           open
           onClose={closeMobileMenu}
-          navId="primary-navigation-mobile"
-          aria-label="주요 내비게이션"
+          navId="guide-primary-navigation-mobile"
+          aria-label="가이드 내비게이션"
         >
           <ul className="flex list-none flex-col gap-1 p-0">{navList}</ul>
         </MobileNavPortal>

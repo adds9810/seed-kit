@@ -4,6 +4,8 @@ import { JsonPlaceholderPostSample } from "@/components/examples/JsonPlaceholder
 import { ButtonLink } from "@/components/ui/Button";
 import { TextLink } from "@/components/ui/TextLink";
 
+const isDev = process.env.NODE_ENV === "development";
+
 export async function generateMetadata(): Promise<Metadata> {
   const title = "Query 예제";
   const description =
@@ -39,11 +41,18 @@ export default function QueryExamplePage() {
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
             `QueryProvider`와 `src/lib/api` 패턴을 그대로 따라가는 데모입니다.
-            구성 설명은{" "}
-            <TextLink href="/guide" className="inline">
-              가이드
-            </TextLink>
-            에서 확인할 수 있습니다.
+            {isDev ? (
+              <>
+                {" "}
+                구성 설명은{" "}
+                <TextLink href="/guide" className="inline">
+                  가이드
+                </TextLink>
+                에서 확인할 수 있습니다.
+              </>
+            ) : (
+              " 로컬 개발 시에만 앱 내 가이드(`/guide`)로 상세 문서를 둡니다."
+            )}
           </p>
         </header>
 
@@ -60,10 +69,12 @@ export default function QueryExamplePage() {
         </section>
 
         <div className="flex flex-wrap gap-3">
-          <ButtonLink href="/guide" variant="outline">
-            가이드로
-          </ButtonLink>
-          <ButtonLink href="/" variant="ghost">
+          {isDev ? (
+            <ButtonLink href="/guide" variant="outline">
+              가이드로
+            </ButtonLink>
+          ) : null}
+          <ButtonLink href="/" variant={isDev ? "ghost" : "outline"}>
             홈으로
           </ButtonLink>
         </div>

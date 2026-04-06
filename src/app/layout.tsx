@@ -1,8 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 
-import { SiteFooter } from "@/components/layout/SiteFooter";
-import { SiteHeader } from "@/components/layout/SiteHeader";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { ThemeAttributeSync } from "@/components/providers/ThemeAttributeSync";
 import { getSiteUrl, siteConfig } from "@/lib/seo/site";
@@ -44,7 +42,7 @@ export const metadata: Metadata = {
         url: siteConfig.ogImagePath,
         width: 1200,
         height: 630,
-        alt: "seed-kit default OG image",
+        alt: `${siteConfig.name} default OG image`,
       },
     ],
   },
@@ -74,15 +72,7 @@ export default function RootLayout({
           <a className="skip-link" href="#main-content">
             본문으로 건너뛰기
           </a>
-          <SiteHeader />
-          <main
-            id="main-content"
-            tabIndex={-1}
-            className="flex flex-1 flex-col outline-none"
-          >
-            {children}
-          </main>
-          <SiteFooter />
+          <div className="flex min-h-full flex-1 flex-col">{children}</div>
         </QueryProvider>
       </body>
     </html>

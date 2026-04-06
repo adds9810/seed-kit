@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function SiteLoading() {
   return (
     <div className="section-gap">
       <div className="page-container max-w-2xl">
