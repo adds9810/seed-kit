@@ -2,7 +2,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /** 프로덕션에서 `/guide` 정적 산출물이 있어도 요청 단에서 막습니다. */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (
     process.env.NODE_ENV === "production" &&
     request.nextUrl.pathname.startsWith("/guide")

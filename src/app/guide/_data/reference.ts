@@ -75,5 +75,7 @@ export const guideFolderStructureTree = `seed-kit/
 │   │   └── ui-store.ts
 │   ├── styles/
 │   │   └── tokens.css
-│   └── utils/
+│   ├── utils/
+│   └── proxy.ts
+├── CHANGELOG.md
 └── README.md`;

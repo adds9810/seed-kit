@@ -144,7 +144,7 @@ export const guideProgressPhases: GuideProgressPhase[] = [
       },
       {
         id: "split-headers-prod-guide",
-        title: "공개 헤더(`SiteHeader`)와 가이드 헤더(`GuideHeader`) 분리, 프로덕션에서 `/guide` 404",
+        title: "공개 헤더(`SiteHeader`)와 가이드 헤더(`GuideHeader`) 분리, 프로덕션에서 `/guide` 404 (`layout` + `src/proxy.ts`)",
         status: "done",
       },
       {
@@ -175,8 +175,8 @@ export const guideProgressPhases: GuideProgressPhase[] = [
         status: "planned",
       },
       {
-        id: "auth-middleware",
-        title: "인증·권한(route group + middleware)",
+        id: "auth-proxy",
+        title: "인증·권한(route group + `src/proxy.ts`)",
         status: "planned",
       },
       {
