@@ -70,6 +70,8 @@ npm run format:check
 
 ## 복사한 뒤 실제 프로젝트로 바꿀 때 채울 곳
 
+> **에이전트/작업자:** 상세 체크리스트는 `AGENTS.md`의 「seed-kit 복사 후 에이전트 할 일」을 따른다. **세팅이 끝나면 그 섹션과 이 README 표, 가이드 `fork-fill-in`을 삭제**한다.
+
 레이아웃은 두고 **이름·설명·화면 문구**만 바꾸면 됩니다. `/guide`는 스타터 작업 메모라 서비스 카피에 넣지 않아도 됩니다.
 
 | 무엇을                              | 어디                                                                                |
@@ -83,7 +85,7 @@ npm run format:check
 | favicon / 공유 이미지               | `src/app/favicon.ico`, `public/og/og-default.svg`(실서비스는 1200×630 PNG/JPG 권장) |
 | npm 패키지 이름                     | `package.json`의 `name`                                                             |
 
-같은 목록은 개발 서버의 `/guide` → 개발 노트에도 있습니다.
+같은 목록은 개발 서버의 `/guide` → 개발 노트, 에이전트용은 `AGENTS.md`에도 있습니다.
 
 ## 문서를 어디에 둘지
 
