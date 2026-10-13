@@ -2,6 +2,31 @@
 
 이 프로젝트의 의존성·동작에 영향을 주는 변경을 기록합니다.
 
+## 2026-10-13 — transitive 취약점 패치 (`npm audit fix`)
+
+직접 의존성은 그대로 두고, lockfile만 갱신했습니다. `--force`는 사용하지 않았습니다.
+
+### 올린 것 (간접 의존성)
+
+| 패키지 | 이전 | 새 버전 | 경로 |
+| --- | --- | --- | --- |
+| `sharp` | 0.35.4 | 0.35.5 | `next` |
+| `source-map-js` | 1.2.1 | 1.2.2 | `@tailwindcss/postcss` / `postcss` |
+| `brace-expansion` | 1.1.12 / 5.0.5 | 1.1.21 / 5.0.12 | `eslint` 등 |
+| `@humanfs/node` | 0.16.7 | 0.16.8 | `eslint` |
+
+### 아직 안 한 것
+
+| 이슈 | 이유 |
+| --- | --- |
+| `braces` (eslint-config-next → micromatch 경유) | `npm audit fix --force`가 `eslint-config-next@14.2.35`로 **다운그레이드**하므로 보류. Next 16 라인·업스트림 수정 대기 |
+
+### Breaking change / 검증
+
+- **발견된 breaking change:** 없음.
+- **검증:** `npm run lint`, `npm run build` 통과 (Next.js 16.4.0).
+- **audit:** `sharp` / `source-map-js` / `brace-expansion` / `@humanfs/node` 해소. `braces`(eslint 경유)는 위 표「아직 안 한 것」참고.
+
 ## 2026-10-13 — React 19.3 맞춤
 
 ### 패키지 변경
@@ -32,14 +57,15 @@
 | 패키지 | Next 올린 직후 | 그다음 |
 | --- | --- | --- |
 | `react` / `react-dom` (+ `@types/*`) | `19.2.8`로 잠시 유지 | 같은 날 위 섹션에서 `19.3.0`으로 반영 |
+| `sharp` / `source-map-js` 등 (transitive) | audit high 잔존 | 같은 날 `npm audit fix` 섹션에서 반영 |
 | `@tanstack/react-query`, `prettier` | 기존 유지 | 차후 마이너·패치 검토 |
-| `sharp` / `source-map-js` (transitive) | audit high 잔존 | 차후 `npm audit fix` 등 검토 |
+| `braces` (eslint-config-next 경유) | — | `--force` 다운그레이드 위험이 있어 보류 |
 
 ### Breaking change / 검증
 
 - **발견된 breaking change:** 없음 (`proxy.ts`·App Router 동작 유지).
 - **검증:** `npm run lint`, `npm run build` 통과 (Next.js 16.4.0, Turbopack).
-- **audit:** `next` 패키지 critical 항목은 해소. transitive high는 위 표「아직 안 한 것」참고.
+- **audit:** `next` 패키지 critical 항목은 해소. transitive는 위 표·최신 audit 섹션 참고.
 
 ## 2026-09-03 — 의존성 보안·최신화
 
