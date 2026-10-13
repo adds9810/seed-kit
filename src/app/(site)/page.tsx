@@ -19,8 +19,8 @@ export default function Home() {
             메인 헤드라인을 여기에
           </h1>
           <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[--text-secondary] md:text-base">
-            서비스나 제품의 한 줄 설명, 핵심 가치를 적는 자리입니다. 레이아웃과
-            타이포는 그대로 두고 문구만 교체해 쓰면 됩니다.
+            서비스나 제품의 한 줄 설명, 핵심 가치를 적는 자리입니다. 레이아웃과 타이포는
+            그대로 두고 문구만 교체해 쓰면 됩니다.
           </p>
           <div className="mt-6 flex flex-col flex-wrap gap-3 sm:flex-row sm:items-center">
             <ButtonLink href="/about" variant="primary">

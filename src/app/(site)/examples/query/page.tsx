@@ -8,8 +8,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = "Query 예제";
-  const description =
-    "TanStack Query와 JSONPlaceholder를 쓰는 샘플 화면입니다.";
+  const description = "TanStack Query와 JSONPlaceholder를 쓰는 샘플 화면입니다.";
 
   return {
     title,
@@ -57,10 +56,7 @@ export default function QueryExamplePage() {
         </header>
 
         <section aria-labelledby="example-query-title">
-          <h2
-            id="example-query-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="example-query-title" className="text-lg font-semibold md:text-xl">
             JSONPlaceholder 게시물
           </h2>
           <div className="mt-4">

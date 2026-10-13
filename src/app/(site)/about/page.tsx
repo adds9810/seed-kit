@@ -35,16 +35,13 @@ export default function AboutPage() {
             프로젝트 소개
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
-            팀 비전, 제공 기능, 타깃 사용자 등 실제 서비스에 맞는 문구로 이
-            페이지 전체를 바꿔 쓰면 됩니다.
+            팀 비전, 제공 기능, 타깃 사용자 등 실제 서비스에 맞는 문구로 이 페이지
+            전체를 바꿔 쓰면 됩니다.
           </p>
         </header>
 
         <section aria-labelledby="about-story-title">
-          <h2
-            id="about-story-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="about-story-title" className="text-lg font-semibold md:text-xl">
             우리가 하는 일
           </h2>
           <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[--text-secondary] md:text-base">
@@ -55,10 +52,7 @@ export default function AboutPage() {
         </section>
 
         <section aria-labelledby="about-contact-title">
-          <h2
-            id="about-contact-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="about-contact-title" className="text-lg font-semibold md:text-xl">
             문의
           </h2>
           <p className="mt-3 text-sm text-[--text-secondary] md:text-base">

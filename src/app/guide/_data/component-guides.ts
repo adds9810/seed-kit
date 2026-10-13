@@ -20,7 +20,7 @@ export const guideComponentTopics: GuideComponentTopic[] = [
     path: "src/components/ui/TextLink.tsx",
     summary: "본문·내비에서 쓰는 텍스트 링크 스타일을 통일합니다.",
     bullets: [
-      "클라이언트 컴포넌트(`\"use client\"`).",
+      '클라이언트 컴포넌트(`"use client"`).',
       "`onNavigate`: 모바일 메뉴 닫기 등 라우트 직후 콜백에 사용합니다.",
       "외부 URL은 `<a>`를 쓰거나 별도 컴포넌트로 분리하는 편이 안전합니다.",
     ],

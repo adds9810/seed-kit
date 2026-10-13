@@ -4,8 +4,7 @@ export const guideProgressPhases: GuideProgressPhase[] = [
   {
     id: "foundation",
     title: "기반·레이아웃",
-    summary:
-      "모바일 퍼스트 기준과 App Router, 공통 레이아웃·접근성 기본값.",
+    summary: "모바일 퍼스트 기준과 App Router, 공통 레이아웃·접근성 기본값.",
     items: [
       {
         id: "responsive",
@@ -139,12 +138,14 @@ export const guideProgressPhases: GuideProgressPhase[] = [
       },
       {
         id: "readme-into-guide",
-        title: "README 기술 가이드 본문을 가이드 `개발 노트`로 이전, 홈·소개는 서비스용",
+        title:
+          "README 기술 가이드 본문을 가이드 `개발 노트`로 이전, 홈·소개는 서비스용",
         status: "done",
       },
       {
         id: "split-headers-prod-guide",
-        title: "공개 헤더(`SiteHeader`)와 가이드 헤더(`GuideHeader`) 분리, 프로덕션에서 `/guide` 404 (`layout` + `src/proxy.ts`)",
+        title:
+          "공개 헤더(`SiteHeader`)와 가이드 헤더(`GuideHeader`) 분리, 프로덕션에서 `/guide` 404 (`layout` + `src/proxy.ts`)",
         status: "done",
       },
       {

@@ -57,18 +57,15 @@ export default function GuidePage() {
             가이드 및 진행 상황
           </h1>
           <p className="max-w-2xl text-sm text-[--text-secondary] md:text-base">
-            스타터 구성·진행·기술 메모는 이 페이지와 `src/app/guide/_data`에만
-            둡니다. 프로덕션에서는 `/guide`가 열리지 않습니다. 목차는 넓은 화면에서
-            왼쪽, 모바일에서는 상단 접기 블록으로 보이며, `_data/guide-nav.ts`와
-            본문 `h2` id를 맞춰 주세요.
+            스타터 구성·진행·기술 메모는 이 페이지와 `src/app/guide/_data`에만 둡니다.
+            프로덕션에서는 `/guide`가 열리지 않습니다. 목차는 넓은 화면에서 왼쪽,
+            모바일에서는 상단 접기 블록으로 보이며, `_data/guide-nav.ts`와 본문 `h2`
+            id를 맞춰 주세요.
           </p>
         </header>
 
         <section aria-labelledby="guide-progress-title">
-          <h2
-            id="guide-progress-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-progress-title" className="text-lg font-semibold md:text-xl">
             진행 상황
           </h2>
           <div className="mt-4 space-y-8">
@@ -102,10 +99,7 @@ export default function GuidePage() {
         </section>
 
         <section aria-labelledby="guide-stack-title">
-          <h2
-            id="guide-stack-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-stack-title" className="text-lg font-semibold md:text-xl">
             기술 스택
           </h2>
           <div className="mt-4 overflow-x-auto rounded-[--radius-md] border border-[--color-border]">
@@ -134,10 +128,7 @@ export default function GuidePage() {
         </section>
 
         <section aria-labelledby="guide-setup-title">
-          <h2
-            id="guide-setup-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-setup-title" className="text-lg font-semibold md:text-xl">
             현재 구성 요약
           </h2>
           <ul className="mt-3 list-inside list-disc space-y-2 text-sm text-[--text-secondary] md:text-base">
@@ -148,10 +139,7 @@ export default function GuidePage() {
         </section>
 
         <section aria-labelledby="guide-components-title">
-          <h2
-            id="guide-components-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-components-title" className="text-lg font-semibold md:text-xl">
             컴포넌트 가이드
           </h2>
           <div className="mt-4 space-y-6">
@@ -178,10 +166,7 @@ export default function GuidePage() {
         </section>
 
         <section aria-labelledby="guide-tree-title">
-          <h2
-            id="guide-tree-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-tree-title" className="text-lg font-semibold md:text-xl">
             폴더 구조(참고)
           </h2>
           <pre className="mt-4 overflow-x-auto rounded-[--radius-md] border border-[--color-border] bg-[--color-muted]/20 p-4 text-xs leading-relaxed md:text-sm">
@@ -190,10 +175,7 @@ export default function GuidePage() {
         </section>
 
         <section aria-labelledby="guide-dev-title">
-          <h2
-            id="guide-dev-title"
-            className="text-lg font-semibold md:text-xl"
-          >
+          <h2 id="guide-dev-title" className="text-lg font-semibold md:text-xl">
             개발 노트
           </h2>
           <div className="mt-4 space-y-6">

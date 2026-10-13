@@ -7,9 +7,7 @@ export function proxy(request: NextRequest) {
     process.env.NODE_ENV === "production" &&
     request.nextUrl.pathname.startsWith("/guide")
   ) {
-    return NextResponse.rewrite(
-      new URL("/__dev_guide_disabled__", request.url),
-    );
+    return NextResponse.rewrite(new URL("/__dev_guide_disabled__", request.url));
   }
   return NextResponse.next();
 }

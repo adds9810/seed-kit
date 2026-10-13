@@ -63,11 +63,7 @@ export default function GuideLayout({
           </nav>
         </aside>
 
-        <main
-          id="main-content"
-          tabIndex={-1}
-          className="min-w-0 flex-1 outline-none"
-        >
+        <main id="main-content" tabIndex={-1} className="min-w-0 flex-1 outline-none">
           {children}
         </main>
       </div>
