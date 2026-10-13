@@ -2,6 +2,28 @@
 
 이 프로젝트의 의존성·동작에 영향을 주는 변경을 기록합니다.
 
+## 2026-10-13 — Next.js 보안·마이너 업데이트 (P0)
+
+### 패키지 변경
+
+| 패키지 | 이전 | 새 버전 | 이유 |
+| --- | --- | --- | --- |
+| `next` | 16.3.4 | 16.4.0 | Sep 2026 Security Release 이후 영향 범위(`16.0`–`16.3.7`)에 해당하던 `16.3.4`를 Active LTS 최신으로 올림. critical(RCE 등) 해소 |
+| `eslint-config-next` | 16.3.4 | 16.4.0 | Next.js와 동일 메이저·마이너에 맞춤 |
+
+### 이번 단계에서 올리지 않은 것
+
+| 패키지 | 현재 | 비고 |
+| --- | --- | --- |
+| `react` / `react-dom` | 19.2.8 | P1에서 19.3.0 검토 예정 |
+| `@tanstack/react-query`, `prettier`, `@types/*` | 기존 유지 | P2 |
+
+### Breaking change / 검증
+
+- **발견된 breaking change:** 없음 (`proxy.ts`·App Router 동작 유지).
+- **검증:** `npm run lint`, `npm run build` 통과 (Next.js 16.4.0, Turbopack).
+- **audit:** `next` 패키지 critical 항목은 해소. `sharp` / `source-map-js` / `eslint-config-next` 경유 transitive high는 잔존(후속 검토).
+
 ## 2026-09-03 — 의존성 보안·최신화
 
 ### 패키지 변경
