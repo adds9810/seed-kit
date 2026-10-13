@@ -38,7 +38,57 @@
 - 컴포넌트는 src/components 안에 기능별로 폴더 분리
 - 타입은 src/types에 정의
 - API 함수는 src/lib/api에 작성
-- 커밋 메시지는 Conventional Commits 형식
+- 커밋 메시지는 아래 **커밋 메시지** 섹션을 따를 것.
+
+---
+
+## 커밋 메시지
+
+- 언어: 한국어. 제안·작성 모두 동일.
+- 형식:
+
+```txt
+type(scope): 제목
+
+본문(왜 했는지, 1~2문장)
+```
+
+- **제목**: 무엇을 했는지 (한 줄). 톤 예: 추가, 구성, 적용, 정리, 복구.
+- **본문**: **왜** 했는지. 나중에 로그만 봐도 의도가 보이게.
+  - 파일 나열·diff 요약은 쓰지 말 것.
+  - “무엇을 맞춰서 / 어떤 상태를 유지·확보하려는지”를 적을 것.
+- `type` 예: `feat` `fix` `docs` `chore` `refactor` `design`
+- `scope`는 선택 (예: `deps`, `ui`, `auth`)
+- 제안 전 `git log --oneline`으로 이 저장소 톤을 맞출 것.
+- 의존성만 올린 커밋도 본문에 **이유**를 적을 것.
+
+### 좋은 예
+
+```txt
+chore: Expo SDK 54 패치 의존성 정리
+
+expo·expo-constants를 SDK 권장 버전으로 맞춰
+expo-doctor 검사 통과 상태를 유지.
+```
+
+```txt
+docs: 진행 문서 보드·핸드오프 내용 복구
+
+플레이스홀더로 비워진 BRIEF/BOARD/HANDOFF에
+Button 완료·Input 진행 상태를 다시 반영.
+```
+
+### 피하기
+
+```txt
+chore: update packages
+```
+
+```txt
+chore: package.json 수정
+
+expo 버전 올림
+```
 
 ---
 
