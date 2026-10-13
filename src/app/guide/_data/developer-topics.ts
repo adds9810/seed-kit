@@ -10,7 +10,7 @@ export const guideDeveloperTopics: GuideDeveloperTopic[] = [
     id: "fork-fill-in",
     title: "복사한 뒤 채울 곳 (프로젝트명·문구)",
     bullets: [
-      "에이전트 상세 체크리스트: `AGENTS.md` 「seed-kit 복사 후 에이전트 할 일」. 세팅이 끝나면 그 섹션·README 표·이 항목(`fork-fill-in`)을 삭제한다.",
+      "에이전트 상세 체크리스트: `AGENTS.md` 「seed-kit 복사 후 에이전트 할 일」. 세팅이 끝나면 그 섹션·README 표·이 항목(`fork-fill-in`)을 삭제한다. `docs/` BRIEF·BOARD·HANDOFF는 채워서 유지.",
       "표시 이름: `.env.local`의 `NEXT_PUBLIC_APP_NAME`, 또는 `src/lib/seo/site.ts`의 `name` 기본값 (헤더·푸터·탭 제목에 쓰임)",
       "검색·OG 설명·키워드: `src/lib/seo/site.ts`의 `description`, `keywords`",
       "사이트 URL·Twitter: `.env.local`의 `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_TWITTER_HANDLE`",

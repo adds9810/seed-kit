@@ -70,7 +70,7 @@ npm run format:check
 
 ## 복사한 뒤 실제 프로젝트로 바꿀 때 채울 곳
 
-> **에이전트/작업자:** 상세 체크리스트는 `AGENTS.md`의 「seed-kit 복사 후 에이전트 할 일」을 따른다. **세팅이 끝나면 그 섹션과 이 README 표, 가이드 `fork-fill-in`을 삭제**한다.
+> **에이전트/작업자:** 상세 체크리스트는 `AGENTS.md`의 「seed-kit 복사 후 에이전트 할 일」을 따른다. **세팅이 끝나면 그 섹션과 이 README 표, 가이드 `fork-fill-in`을 삭제**한다. `docs/PROJECT_BRIEF.md` · `TASK_BOARD.md` · `HANDOFF.md`는 새 프로젝트 내용으로 채운 뒤 **유지**한다.
 
 레이아웃은 두고 **이름·설명·화면 문구**만 바꾸면 됩니다. `/guide`는 스타터 작업 메모라 서비스 카피에 넣지 않아도 됩니다.
 
@@ -89,12 +89,14 @@ npm run format:check
 
 ## 문서를 어디에 둘지
 
-| 구분                       | 위치                                         |
-| -------------------------- | -------------------------------------------- |
-| 스타터·진행·스택·개발 메모 | 개발 시에만 `/guide` + `src/app/guide/_data` |
-| 설치·실행·CI·환경변수      | 이 README                                    |
-| 의존성·버전 이력           | [CHANGELOG.md](./CHANGELOG.md)               |
-| 라우트별 예시              | `/examples/query` 등                         |
+| 구분                                | 위치                                                          |
+| ----------------------------------- | ------------------------------------------------------------- |
+| 설치·실행·CI·환경변수               | 이 README                                                     |
+| AI 작업 규칙·(일시) 복사 체크리스트 | [AGENTS.md](./AGENTS.md)                                      |
+| 목적·할 일·인수인계 (사람+AI)       | [docs/](./docs/) — `PROJECT_BRIEF` · `TASK_BOARD` · `HANDOFF` |
+| 의존성·버전 이력                    | [CHANGELOG.md](./CHANGELOG.md)                                |
+| 스타터·스택·개발 메모(앱 안)        | 개발 시에만 `/guide` + `src/app/guide/_data`                  |
+| 라우트별 예시                       | `/examples/query` 등                                          |
 
 ## 참고 링크
 
