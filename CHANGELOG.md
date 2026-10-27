@@ -2,6 +2,33 @@
 
 이 프로젝트의 의존성·동작에 영향을 주는 변경을 기록합니다.
 
+## 2026-10-27 — Next.js 보안·패치 업데이트
+
+[Oct 14 Security Update](https://nextjs.org/blog/nextjs-security-update-october-14-2026) 이후 `16.4.0` 영향 범위를 벗어나도록 Active LTS 최신으로 맞춤. 관련 React·Query·Zustand 패치도 함께 반영.
+
+### 패키지 변경
+
+| 패키지                  | 이전    | 새 버전 | 이유                                                         |
+| ----------------------- | ------- | ------- | ------------------------------------------------------------ |
+| `next`                  | 16.4.0  | 16.4.3  | Critical RCE×2·High DoS 패치(`16.4.1+`) 포함, 16.4 라인 최신 |
+| `eslint-config-next`    | 16.4.0  | 16.4.3  | Next.js와 동일 마이너·패치에 맞춤                            |
+| `react` / `react-dom`   | 19.3.0  | 19.3.1  | 보안 업데이트와 맞물린 React 패치                            |
+| `@tanstack/react-query` | 5.104.2 | 5.105.0 | 마이너 최신화                                                |
+| `zustand`               | 5.0.15  | 5.0.16  | 패치 최신화                                                  |
+
+### 이번에도 올리지 않은 것
+
+| 패키지                                          | 현재   | 비고                        |
+| ----------------------------------------------- | ------ | --------------------------- |
+| `@types/react` / `@types/react-dom`             | 19.3.0 | `19.3.1` 타입 패키지 없음   |
+| `eslint` 10 / `typescript` 7 / `@types/node` 26 | 보류   | 메이저·CI Node 20 맞춤 유지 |
+
+### Breaking change / 검증
+
+- **발견된 breaking change:** 없음.
+- **검증:** `npm run lint`, `npm run build` 통과 (Next.js 16.4.3 + React 19.3.1).
+- **audit:** `npm audit` 0 vulnerabilities (`sharp` 0.35.5 유지).
+
 ## 2026-10-13 — Prettier `endOfLine: auto` · format:check 정리
 
 - `.prettierrc`에 `"endOfLine": "auto"` 추가 (Windows CRLF 작업 트리와 LF CI가 같이 통과하도록).

@@ -6,9 +6,7 @@
 
 ## 할 일
 
-- [ ] Next.js 10/14(또는 발표일) 보안 릴리스 나오면 `next` / `eslint-config-next` 패치 + CHANGELOG
 - [ ] (선택) remote URL에 박힌 PAT 폐기·credential 방식으로 교체
-- [ ] (선택) `braces` via eslint-config-next — 업스트림 수정 대기 (`audit fix --force` 금지)
 
 ## 하는 중
 
@@ -16,6 +14,8 @@
 
 ## 됨
 
+- [x] Next.js 16.4.3 · React 19.3.1 (Oct 14 보안 패치 + 관련 패치)
+- [x] eslint-config-next 16.4.3 · react-query 5.105.0 · zustand 5.0.16
 - [x] Next.js 16.4.0 · React 19.3.0
 - [x] `npm audit fix`(비강제) — sharp / source-map-js 등
 - [x] react-query 5.104.2 · prettier 3.9.10
