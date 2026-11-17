@@ -2,6 +2,23 @@
 
 이 프로젝트의 의존성·동작에 영향을 주는 변경을 기록합니다.
 
+## 2026-11-17 — Next.js Nov 보안 패치
+
+[November 2026 Security Release](https://nextjs.org/blog/november-2026-security-release) 이후 `16.4.3`이 영향 범위(`16.3.0`–`16.4.4`)에 남아 있어 Active LTS 최신으로 맞춤.
+
+### 패키지 변경
+
+| 패키지               | 이전   | 새 버전 | 이유                                                 |
+| -------------------- | ------ | ------- | ---------------------------------------------------- |
+| `next`               | 16.4.3 | 16.4.6  | Nov 3 보안 패치 최소선 `16.4.5` 포함, 16.4 라인 최신 |
+| `eslint-config-next` | 16.4.3 | 16.4.6  | Next.js와 동일 패치에 맞춤                           |
+
+### Breaking change / 검증
+
+- **발견된 breaking change:** 없음.
+- **검증:** `npm run lint`, `npm run build` 통과 (Next.js 16.4.6).
+- **audit:** `next` moderate 항목 해소. `minimatch`(typescript-eslint 경유) moderate는 잔존.
+
 ## 2026-10-27 — Next.js 보안·패치 업데이트
 
 [Oct 14 Security Update](https://nextjs.org/blog/nextjs-security-update-october-14-2026) 이후 `16.4.0` 영향 범위를 벗어나도록 Active LTS 최신으로 맞춤. 관련 React·Query·Zustand 패치도 함께 반영.
