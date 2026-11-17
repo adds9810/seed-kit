@@ -7,8 +7,6 @@
 ## 할 일
 
 - [ ] (선택) remote URL에 박힌 PAT 폐기·credential 방식으로 교체
-- [ ] (선택) react-query·zustand·tailwind·prettier 마이너/패치
-- [ ] (선택) `minimatch`(typescript-eslint 경유) audit moderate — `npm audit fix` 검토
 
 ## 하는 중
 
@@ -16,6 +14,8 @@
 
 ## 됨
 
+- [x] react-query 5.107.1 · zustand 5.1.0 · tailwind 4.3.5 · prettier 3.10.1
+- [x] `npm audit fix`(비강제) — minimatch moderate 해소, audit 0
 - [x] Next.js 16.4.6 · eslint-config-next 16.4.6 (Nov 보안 패치)
 - [x] Next.js 16.4.3 · React 19.3.1 (Oct 14 보안 패치 + 관련 패치)
 - [x] eslint-config-next 16.4.3 · react-query 5.105.0 · zustand 5.0.16

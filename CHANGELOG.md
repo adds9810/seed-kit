@@ -2,6 +2,29 @@
 
 이 프로젝트의 의존성·동작에 영향을 주는 변경을 기록합니다.
 
+## 2026-11-17 — 저위험 마이너·패치 · audit fix
+
+Next 보안 패치 이후 남은 마이너·패치와 transitive audit를 정리.
+
+### 패키지 변경
+
+| 패키지                                 | 이전    | 새 버전 | 이유          |
+| -------------------------------------- | ------- | ------- | ------------- |
+| `@tanstack/react-query`                | 5.105.0 | 5.107.1 | 마이너 최신화 |
+| `zustand`                              | 5.0.16  | 5.1.0   | 마이너 최신화 |
+| `tailwindcss` / `@tailwindcss/postcss` | 4.3.3   | 4.3.5   | 패치 최신화   |
+| `prettier`                             | 3.9.10  | 3.10.1  | 마이너 최신화 |
+
+### audit
+
+- `npm audit fix`(비강제)로 `minimatch`(typescript-eslint 경유) moderate 해소.
+- **검증 후:** `npm audit` 0 vulnerabilities.
+
+### Breaking change / 검증
+
+- **발견된 breaking change:** 없음.
+- **검증:** `npm run lint`, `npm run format:check`, `npm run build` 통과 (Next.js 16.4.6).
+
 ## 2026-11-17 — Next.js Nov 보안 패치
 
 [November 2026 Security Release](https://nextjs.org/blog/november-2026-security-release) 이후 `16.4.3`이 영향 범위(`16.3.0`–`16.4.4`)에 남아 있어 Active LTS 최신으로 맞춤.

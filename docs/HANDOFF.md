@@ -6,8 +6,9 @@
 
 ## 최근 맥락 (2026-11-17)
 
-- Nov 보안 업데이트 반영: `next` / `eslint-config-next` `16.4.6` (최소 패치선 `16.4.5`).
-- `npm run lint` · `npm run build` 통과. `next` audit 해소. `minimatch`(eslint 경유) moderate 잔존.
+- Nov 보안: `next` / `eslint-config-next` `16.4.6`.
+- 저위험 마이너·패치: Query `5.107.1`, Zustand `5.1.0`, Tailwind `4.3.5`, Prettier `3.10.1`.
+- `npm audit fix`로 minimatch moderate 해소 → audit 0. `lint` · `format:check` · `build` 통과.
 - 복사본 세팅 시 `AGENTS.md` 「복사 후 에이전트 할 일」따름. 끝나면 일회성 섹션·README 표·guide `fork-fill-in` 삭제. **`docs/`는 채워서 유지.**
 
 ## 결정
@@ -26,7 +27,5 @@
 
 ## 다음에 이을 것
 
-1. (선택) react-query·zustand·tailwind·prettier 마이너/패치
-2. (선택) `minimatch` audit fix 검토
-3. 필요 시 PAT / remote URL 정리
-4. (복사본) 새 프로젝트명·목적으로 BRIEF·보드 채우기 + 화면/SEO 문구
+1. 필요 시 PAT / remote URL 정리
+2. (복사본) 새 프로젝트명·목적으로 BRIEF·보드 채우기 + 화면/SEO 문구
